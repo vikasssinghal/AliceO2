@@ -1095,7 +1095,7 @@ GPUd() bool GPUTPCGMTrackParam::CheckNumericalQuality(float overrideCovYY) const
   return ok;
 }
 
-GPUdii() void GPUTPCGMTrackParam::RefitTrack(GPUTPCGMMergedTrack& GPUrestrict() track, int32_t iTrk, GPUTPCGMMerger* GPUrestrict() merger, int32_t attempt) // VS: Changed GPUd -> GPUdii (forceinline). No code break and no performance penalty. 
+GPUdii() void GPUTPCGMTrackParam::RefitTrack(GPUTPCGMMergedTrack& GPUrestrict() track, int32_t iTrk, GPUTPCGMMerger* GPUrestrict() merger, int32_t attempt) // VS: Changed GPUd -> GPUdii (forceinline). No code break and no performance penalty.
 {
   if (!track.OK()) {
     return;
