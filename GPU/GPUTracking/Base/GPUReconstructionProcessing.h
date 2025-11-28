@@ -31,41 +31,6 @@ namespace o2::gpu
 
 struct GPUDefParameters;
 
-namespace gpu_reconstruction_kernels // TODO: Get rid of this namespace
-{
-struct deviceEvent {
-  constexpr deviceEvent() = default;
-  constexpr deviceEvent(std::nullptr_t p) : v(nullptr) {};
-  template <class T>
-  void set(T val)
-  {
-    v = reinterpret_cast<void*&>(val);
-  }
-  template <class T>
-  T& get()
-  {
-    return reinterpret_cast<T&>(v);
-  }
-  template <class T>
-  T* getEventList()
-  {
-    return reinterpret_cast<T*>(this);
-  }
-  bool isSet() const { return v; }
-
- private:
-  void* v = nullptr; // We use only pointers anyway, and since cl_event and cudaEvent_t and hipEvent_t are actually pointers, we can cast them to deviceEvent (void*) this way.
-};
-
-class threadContext
-{
- public:
-  threadContext();
-  virtual ~threadContext();
-};
-
-} // namespace gpu_reconstruction_kernels
-
 class GPUReconstructionProcessing : public GPUReconstruction
 {
  public:
